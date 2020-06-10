@@ -10,14 +10,14 @@ class Data extends Component {
 
 	render() {
 		return (
-			<div style={{
+      <div style={{
         display: "flex",
         flexDirection: "column",
         textAlign: "center",
         padding: "10px"
       }}>
+      
 				<div>
-          <h2>COVID-19 Stats</h2>
           <div style={{
             fontWeight: "bold"}} >
             {this.props.info.Country}</div>
@@ -65,6 +65,7 @@ fetchData() {
     render() { 
       return (  
         <div>
+          <h2 style={{textAlign: "center"}}>COVID-19 Stats</h2>
         
           {this.state.hits.map((covidData, index) => (
 					<Data key={index} info={covidData} /> ))}
