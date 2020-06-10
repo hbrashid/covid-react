@@ -94,14 +94,15 @@ class App extends Component {
     var polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name} : {value}";
     polygonSeries.heatRules.push({
-      "property": "fill",
-      "target": polygonSeries.mapPolygons.template,
-      "min": am4core.color("#F5DBCB"),
-      "max": am4core.color("#ED7B84"),
+        "target": polygonSeries.mapPolygons.template,
+        "property": "fill",
+        "min": am4core.color("#F5DBCB"),
+        "max": am4core.color("#ED7B84"),
+        "dataField": "value",
+        "logarithmic": true
     });
 
     let mapData = this.state.hits || [];
-    console.log(mapData);
     mapData.forEach(newData => {
         polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed})
     });
