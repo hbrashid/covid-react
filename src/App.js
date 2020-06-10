@@ -9,6 +9,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import Logo from './img/covid.png';
 
 am4core.useTheme(am4themes_animated);
 
@@ -22,22 +23,7 @@ class Data extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: 'space-around',
-          textAlign: "center",
-          padding: "10px",
-          fontSize:'xx-large',
-          border: '2px solid black',
-          borderRadius: '5px',
-          width: '50%',
-          margin:'20px auto',
-          webkitBoxShadow: '0px 6px 15px -5px #00000050', 
-          boxShadow: '0px 6px 15px -5px #00000050'
-        }}
-      >
+      <div className="dataDiv">
         <div>
           <div
             style={{
@@ -128,8 +114,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-        <h2 style={{ textAlign: "center" }}>COVID-19 Stats</h2>
+        <div id="chartdiv" className="map"></div>
+        <img src={Logo} alt='' title='Updated Daily' style={{width:'24px',height:'24px',float:'left',margin:'5px 10px'}} /><h2 style={{ textAlign: "left" }}>COVID-19 Stats</h2>
 
         {this.state.hits.map((covidData, index) => (
           <Data key={index} info={covidData} />
