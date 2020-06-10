@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
+import RecoveredIcon from '@material-ui/icons/Favorite';
+import DeathsIcon from '@material-ui/icons/FavoriteBorder';
+import NewCasesIcon from '@material-ui/icons/NewReleases';
+import TotalCasesIcon from '@material-ui/icons/Functions';
 
 class Data extends Component {
   constructor(props) {
@@ -12,9 +16,17 @@ class Data extends Component {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
+          justifyContent: 'space-around',
           textAlign: "center",
           padding: "10px",
+          fontSize:'xx-large',
+          border: '2px solid black',
+          borderRadius: '5px',
+          width: '50%',
+          margin:'20px auto',
+          webkitBoxShadow: '0px 6px 15px -5px #00000050', 
+          boxShadow: '0px 6px 15px -5px #00000050'
         }}
       >
         <div>
@@ -26,8 +38,18 @@ class Data extends Component {
             {this.props.info.Country}
           </div>
         </div>
-        <p>Total Confirmed: {this.props.info.TotalConfirmed}</p>
-        <p>Total Deaths: {this.props.info.TotalDeaths}</p>
+        <div>
+        <TotalCasesIcon title="Confirmed Cases" style={{color:"red",height:'20px',width:'20px'}} />{this.props.info.TotalConfirmed}
+        </div>
+        <div>
+        <DeathsIcon title="Total Deaths" style={{color:"black",height:'20px',width:'20px'}} />{this.props.info.TotalDeaths}
+        </div>
+        <div>
+        <NewCasesIcon title="New Cases" style={{color:"red",height:'20px',width:'20px'}} />{this.props.info.NewConfirmed}
+        </div>
+        <div>
+        <RecoveredIcon title="Total Recovered" style={{color:"blue",height:'20px',width:'20px'}} />{this.props.info.TotalRecovered}
+        </div>
       </div>
     );
   }
@@ -52,7 +74,6 @@ class App extends Component {
         this.setState({
           hits: data.Countries
         });
-        console.log(data);
       })
       .catch((error) => console.log("parsing failed", error));
   }
