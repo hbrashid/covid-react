@@ -50,7 +50,7 @@ class App extends Component {
       .then((json) => json.json())
       .then((data) => {
         this.setState({
-          hits: data.Countries,
+          hits: data.Countries
         });
         console.log(data);
       })
