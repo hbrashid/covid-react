@@ -1,38 +1,45 @@
+
 .App {
   text-align: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.map {
+  width: 50%;
+  height: 400px;
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
+  box-shadow: 5px 5px 15px 5px #00000070;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dataDiv {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+  padding: 10px;
+  font-size: xx-large;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 40%;
+  margin:40px 20px;
+  -webkit-box-shadow: 5px 5px 15px 5px #615d5d60; 
+  box-shadow: 5px 5px 15px 5px #615d5d60;
+  transform: skew(-4deg);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attributions {
+  width: 50%;
+  height: 80px;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
+  box-shadow: 5px 5px 15px 5px #00000070;
 }
