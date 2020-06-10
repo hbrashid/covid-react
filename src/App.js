@@ -4,11 +4,20 @@ import RecoveredIcon from '@material-ui/icons/Favorite';
 import DeathsIcon from '@material-ui/icons/FavoriteBorder';
 import NewCasesIcon from '@material-ui/icons/NewReleases';
 import TotalCasesIcon from '@material-ui/icons/Functions';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import * as am4maps from "@amcharts/amcharts4/maps";
+import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
+am4core.useTheme(am4themes_animated);
 
 class Data extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      hits: []
+    };
   }
 
   render() {
@@ -59,12 +68,48 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hits: [{}],
+      hits: [],
     };
+  }
+
+ 
+  componentWillUnmount() {
+    if (this.map) {
+      this.map.dispose();
+    }
   }
 
   componentDidMount() {
     this.fetchData();
+
+  
+  }
+
+  createNewChart = () => {
+    let map = am4core.create("chartdiv", am4maps.MapChart);
+    map.geodata = am4geodata_worldLow;
+    map.projection = new am4maps.projections.Miller();
+    var polygonSeries = new am4maps.MapPolygonSeries();
+    polygonSeries.useGeodata = true;
+    var polygonTemplate = polygonSeries.mapPolygons.template;
+    polygonTemplate.tooltipText = "{name} : {value}";
+    polygonSeries.heatRules.push({
+      "property": "fill",
+      "target": polygonSeries.mapPolygons.template,
+      "min": am4core.color("#F5DBCB"),
+      "max": am4core.color("#ED7B84"),
+    });
+
+    let mapData = this.state.hits || [];
+    console.log(mapData);
+    mapData.forEach(newData => {
+        polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed})
+    });
+    
+    polygonTemplate.propertyFields.fill = "fill";
+    map.series.push(polygonSeries);
+    
+    this.map = map;
   }
 
   fetchData() {
@@ -74,6 +119,7 @@ class App extends Component {
         this.setState({
           hits: data.Countries
         });
+        this.createNewChart();
       })
       .catch((error) => console.log("parsing failed", error));
   }
@@ -81,6 +127,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
         <h2 style={{ textAlign: "center" }}>COVID-19 Stats</h2>
 
         {this.state.hits.map((covidData, index) => (
