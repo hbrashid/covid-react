@@ -17,6 +17,7 @@ class Data extends Component {
         padding: "10px"
       }}>
 				<div>
+          <h2>COVID-19 Stats</h2>
           <div style={{
             fontWeight: "bold"}} >
             {this.props.info.Country}</div>
