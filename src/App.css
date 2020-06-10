@@ -1,13 +1,17 @@
+
 .App {
   text-align: center;
+  
 }
 
 .map {
   width: 50%;
-  height: 500px;
+  height: 400px;
   position: fixed;
-  top: 20px;
+  top: 40px;
   right: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
   -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
   box-shadow: 5px 5px 15px 5px #00000070;
 }
@@ -22,8 +26,20 @@
   border: 2px solid black;
   border-radius: 5px;
   width: 40%;
-  margin:20px;
+  margin:40px 20px;
+  -webkit-box-shadow: 5px 5px 15px 5px #615d5d60; 
+  box-shadow: 5px 5px 15px 5px #615d5d60;
+  transform: skew(-4deg);
+}
+
+.attributions {
+  width: 50%;
+  height: 80px;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
   -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
   box-shadow: 5px 5px 15px 5px #00000070;
-  transform: skew(-8deg);
 }

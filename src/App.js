@@ -13,6 +13,16 @@ import Logo from './img/covid.png';
 
 am4core.useTheme(am4themes_animated);
 
+function Attributions() {
+
+  return(
+    <div className="attributions">
+      &nbsp;API by: <a href="https://covid19api.com/" target="blank">Covid-19 API</a><br/>
+      &nbsp;Data Provided By: <a href="https://github.com/CSSEGISandData/COVID-19" target="blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a>
+    </div>
+  )
+}
+
 class Data extends Component {
   constructor(props) {
     super(props);
@@ -120,6 +130,7 @@ class App extends Component {
         {this.state.hits.map((covidData, index) => (
           <Data key={index} info={covidData} />
         ))}
+        <Attributions />
       </div>
     );
   }
