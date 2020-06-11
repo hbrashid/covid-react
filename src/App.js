@@ -86,6 +86,9 @@ class App extends Component {
     polygonSeries.useGeodata = true;
     var polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name} : {value}";
+    polygonTemplate.events.on("hit", function(ev) {
+      ev.target.series.chart.zoomToMapObject(ev.target)
+    });
     polygonSeries.heatRules.push({
         "target": polygonSeries.mapPolygons.template,
         "property": "fill",
