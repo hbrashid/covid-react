@@ -10,6 +10,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Logo from './img/covid.png';
+import Navbar from './Navbar';
 
 am4core.useTheme(am4themes_animated);
 
@@ -17,6 +18,13 @@ function Attributions() {
 
   return(
     <div className="attributions">
+      <div>
+        <TotalCasesIcon style={{color:"red"}} />Total Cases
+        <DeathsIcon style={{paddingLeft:"10px"}} />Total Deaths
+        <NewCasesIcon style={{paddingLeft:"10px", color:"red"}} />New Cases
+        <RecoveredIcon style={{paddingLeft:"10px", color:"blue"}} />Total Recovered
+      </div>
+      <br/>
       &nbsp;API by: <a href="https://covid19api.com/" target="blank">Covid-19 API</a><br/>
       &nbsp;Data Provided By: <a href="https://github.com/CSSEGISandData/COVID-19" target="blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a><br/>
       &nbsp;Country Flags Provided By: <a href="https://www.countryflags.io/" target="blank">Country Flags API</a>
@@ -126,8 +134,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div id="chartdiv" className="map"></div>
-        <img src={Logo} alt='' title='Updated Daily' style={{width:'24px',height:'24px',float:'left',margin:'5px 10px'}} /><h2 style={{ textAlign: "left" }}>COVID-19 Stats</h2>
+      <Navbar />
+        <div style={{ marginTop:"15px"}} id="chartdiv" className="map"></div>
+        
 
          <h4 style={{paddingLeft:"27px"}}>Global Stats: {this.state.global.TotalConfirmed} cases; {this.state.global.TotalDeaths} deaths; {this.state.global.TotalRecovered} recovered</h4>
 
