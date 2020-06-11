@@ -1,69 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
-import RecoveredIcon from '@material-ui/icons/Favorite';
-import DeathsIcon from '@material-ui/icons/FavoriteBorder';
-import NewCasesIcon from '@material-ui/icons/NewReleases';
-import TotalCasesIcon from '@material-ui/icons/Functions';
 import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
+import * as am4charts from "@amcharts/amcharts4/charts"; // don't delete, will use for time lapse view
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import Logo from './img/covid.png';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
+import Data from './components/Data'
+import Attributions from './components/Attributions';
+import GlobalStats from './components/GlobalStats';
 
 am4core.useTheme(am4themes_animated);
 
-function Attributions() {
-
-  return(
-    <div className="attributions">
-      <div>
-        <TotalCasesIcon style={{color:"red"}} />Total Cases
-        <DeathsIcon style={{paddingLeft:"10px"}} />Total Deaths
-        <NewCasesIcon style={{paddingLeft:"10px", color:"red"}} />New Cases
-        <RecoveredIcon style={{paddingLeft:"10px", color:"blue"}} />Total Recovered
-      </div>
-      <br/>
-      &nbsp;API by: <a href="https://covid19api.com/" target="blank">Covid-19 API</a><br/>
-      &nbsp;Data Provided By: <a href="https://github.com/CSSEGISandData/COVID-19" target="blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a><br/>
-      &nbsp;Country Flags Provided By: <a href="https://www.countryflags.io/" target="blank">Country Flags API</a>
-    </div>
-  )
-}
-
-class Data extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hits: []
-    };
-  }
-
-  render() {
-    return (
-      <div className="dataDiv">
-        <div>
-          <div style={{fontWeight: "bold"}}>
-           <img src={`https://www.countryflags.io/${this.props.info.CountryCode}/shiny/24.png`} style={{float:'left',marginRight:'5px'}} /> {this.props.info.Country}
-          </div>
-        </div>
-        <div>
-        <TotalCasesIcon title="Confirmed Cases" style={{color:"red",height:'20px',width:'20px'}} />{this.props.info.TotalConfirmed}
-        </div>
-        <div>
-        <DeathsIcon title="Total Deaths" style={{color:"black",height:'20px',width:'20px'}} />{this.props.info.TotalDeaths}
-        </div>
-        <div>
-        <NewCasesIcon title="New Cases" style={{color:"red",height:'20px',width:'20px'}} />{this.props.info.NewConfirmed}
-        </div>
-        <div>
-        <RecoveredIcon title="Total Recovered" style={{color:"blue",height:'20px',width:'20px'}} />{this.props.info.TotalRecovered}
-        </div>
-      </div>
-    );
-  }
-}
 
 class App extends Component {
   constructor(props) {
@@ -73,7 +21,6 @@ class App extends Component {
       global: []
     };
   }
-
  
   componentWillUnmount() {
     if (this.map) {
@@ -83,21 +30,37 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchData();
-
-  
   }
 
   createNewChart = () => {
+    // setup the chart in its container
     let map = am4core.create("chartdiv", am4maps.MapChart);
+    // we're going to use the low-res world map
     map.geodata = am4geodata_worldLow;
+    // the type of map we're using 
+    // here's the others: https://www.amcharts.com/docs/v4/chart-types/map/
+    //
     map.projection = new am4maps.projections.Miller();
+    // this is going to define all the countries on the map
     var polygonSeries = new am4maps.MapPolygonSeries();
+    // and handle it automatically! ooh, yeah...
     polygonSeries.useGeodata = true;
+    // get rid of Antarctica (remove the next line to bring it back)
+    polygonSeries.exclude = ["AQ"];
+
+    // this is the template to interface our own configurations
+    // to the map countries (polygonseries)
     var polygonTemplate = polygonSeries.mapPolygons.template;
+    // when we hover over a country show its name and number of cases
     polygonTemplate.tooltipText = "{name} : {value}";
+
+    // when we click on a country zoom in on that country
     polygonTemplate.events.on("hit", function(ev) {
       ev.target.series.chart.zoomToMapObject(ev.target)
     });
+
+    // set up the scale and values for the heatmap
+    
     polygonSeries.heatRules.push({
         "target": polygonSeries.mapPolygons.template,
         "property": "fill",
@@ -107,17 +70,27 @@ class App extends Component {
         "logarithmic": true
     });
 
+    // check if the API data has filled the state object yet
     let mapData = this.state.hits || [];
+
+    // go through all the API data and add each country's id, name and TotalConfirmed to the 
+    // map
+    // all these values can be changed to whatever we want to display on our map
     mapData.forEach(newData => {
         polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed})
     });
     
+    // tell it to make each country solid
     polygonTemplate.propertyFields.fill = "fill";
+
+    // commit our settings
     map.series.push(polygonSeries);
     
+    // establish our map. Ease to the pease.
     this.map = map;
   }
 
+  // our initial API call 
   fetchData() {
     fetch(`https://api.covid19api.com/summary`)
       .then((json) => json.json())
@@ -135,14 +108,17 @@ class App extends Component {
     return (
       <div>
       <Navbar />
-        <div style={{ marginTop:"15px"}} id="chartdiv" className="map"></div>
-        
+        {/* // the container div for the map */}
+        <div id="chartdiv" className="map"></div>
+        {/* // the global totals line above the country data */}
+        <GlobalStats global={this.state.global} />
 
-         <h4 style={{paddingLeft:"27px"}}>Global Stats: {this.state.global.TotalConfirmed} cases; {this.state.global.TotalDeaths} deaths; {this.state.global.TotalRecovered} recovered</h4>
-
+        {/* // map through each country and put its data on a card */}
         {this.state.hits.map((covidData, index) => (
           <Data key={index} info={covidData} />
         ))}
+
+        {/* // show where all the data came from */}
         <Attributions />
       </div>
     );
