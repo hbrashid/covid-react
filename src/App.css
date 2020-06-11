@@ -5,6 +5,7 @@
 }
 
 .map {
+  margin: 15px;
   width: 50%;
   height: 400px;
   position: fixed;
