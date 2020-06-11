@@ -22,7 +22,7 @@
   justify-content: space-around;
   text-align: left;
   padding: 10px;
-  font-size: xx-large;
+  font-size: large;
   border: 2px solid black;
   border-radius: 5px;
   width: 40%;
@@ -38,6 +38,7 @@
   position: fixed;
   bottom: 100px;
   right: 20px;
+  font-size: small;
   border: 1px solid black;
   border-radius: 5px;
   -webkit-box-shadow: 5px 5px 15px 5px #00000070; 

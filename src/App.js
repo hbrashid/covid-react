@@ -18,7 +18,8 @@ function Attributions() {
   return(
     <div className="attributions">
       &nbsp;API by: <a href="https://covid19api.com/" target="blank">Covid-19 API</a><br/>
-      &nbsp;Data Provided By: <a href="https://github.com/CSSEGISandData/COVID-19" target="blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a>
+      &nbsp;Data Provided By: <a href="https://github.com/CSSEGISandData/COVID-19" target="blank">COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University</a><br/>
+      &nbsp;Country Flags Provided By: <a href="https://www.countryflags.io/" target="blank">Country Flags API</a>
     </div>
   )
 }
@@ -35,12 +36,8 @@ class Data extends Component {
     return (
       <div className="dataDiv">
         <div>
-          <div
-            style={{
-              fontWeight: "bold",
-            }}
-          >
-            {this.props.info.Country}
+          <div style={{fontWeight: "bold"}}>
+           <img src={`https://www.countryflags.io/${this.props.info.CountryCode}/shiny/24.png`} style={{float:'left',marginRight:'5px'}} /> {this.props.info.Country}
           </div>
         </div>
         <div>
