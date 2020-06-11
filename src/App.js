@@ -62,6 +62,7 @@ class App extends Component {
     super(props);
     this.state = {
       hits: [],
+      global: []
     };
   }
 
@@ -114,6 +115,7 @@ class App extends Component {
       .then((json) => json.json())
       .then((data) => {
         this.setState({
+          global: data.Global,
           hits: data.Countries
         });
         this.createNewChart();
@@ -126,6 +128,8 @@ class App extends Component {
       <div>
         <div id="chartdiv" className="map"></div>
         <img src={Logo} alt='' title='Updated Daily' style={{width:'24px',height:'24px',float:'left',margin:'5px 10px'}} /><h2 style={{ textAlign: "left" }}>COVID-19 Stats</h2>
+
+         <h4 style={{paddingLeft:"27px"}}>Global Stats: {this.state.global.TotalConfirmed} cases; {this.state.global.TotalDeaths} deaths; {this.state.global.TotalRecovered} recovered</h4>
 
         {this.state.hits.map((covidData, index) => (
           <Data key={index} info={covidData} />
