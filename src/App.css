@@ -37,11 +37,31 @@
   width: 50%;
   height: 120px;
   position: fixed;
-  bottom: 100px;
+  bottom: 7vh;
   right: 20px;
   font-size: small;
   border: 1px solid black;
   border-radius: 5px;
   -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
   box-shadow: 5px 5px 15px 5px #00000070;
+}
+
+@media (max-width: 768px) {
+  * {
+    font-size: 0.8rem;
+  }
+  .map {
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+  .dataDiv {
+    display: flex;
+    width: auto;
+    margin-top: 50%;
+  }
+  .attributions {
+    width: auto;
+  }
 }
