@@ -5,7 +5,7 @@ class GlobalStats extends Component {
 
     render() {
         return(
-            <div>
+            <div style={{marginTop:'80px'}}>
             <h4 style={{paddingLeft:"27px"}}>Global Stats: {this.props.global.TotalConfirmed} cases; {this.props.global.TotalDeaths} deaths; {this.props.global.TotalRecovered} recovered</h4>
             </div>
         )
