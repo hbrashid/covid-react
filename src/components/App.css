@@ -69,12 +69,22 @@
 }
 
 .nav-list {
+  margin-top: 0px;
   list-style: none;
   display: flex;
+  align-items: center;
 }
 
 .nav-list-item {
-  margin: auto 20px;
+  margin: 0 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: x-large;
+  font-weight: bold;
+  color:white;
+  margin-bottom:30px;
 }
 
 @media (max-width: 768px) {
