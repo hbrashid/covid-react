@@ -13,12 +13,12 @@ class About extends Component {
                     <h1 style={{ textAlign: 'center' }}>Contributors</h1>
                     <div style={{display:'flex',flexDirection:'row',justifyContent:'space-around',marginBottom:'40px'}}>
                     <Card className="contributorCard" >
-                    <a href="https://github.com/hbrashid" target="blank"> <img src={hassan} className="contributorPix" /><br/>
+                    <a href="https://github.com/hbrashid" target="blank"> <img alt='' src={hassan} className="contributorPix" /><br/>
                        <span style={{fontWeight:'bold'}}>hbrashid</span></a><br/>
                         API, styling
                     </Card>
                     <Card className="contributorCard" >
-                       <a href="https://github.com/crashdaddy" target="blank"> <img src={crashdaddy} className="contributorPix" /><br/>
+                       <a href="https://github.com/crashdaddy" target="blank"> <img alt='' src={crashdaddy} className="contributorPix" /><br/>
                        <span style={{fontWeight:'bold'}}>crashdaddy</span></a><br/>
                        Heatmap, css
                     </Card>
