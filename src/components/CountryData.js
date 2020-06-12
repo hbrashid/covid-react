@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts"; 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { forEach } from 'lodash';
 
 am4core.useTheme(am4themes_animated);
 
@@ -78,8 +77,12 @@ class CountryData extends Component {
       }
 
       render() {
+        let country =  this.props.match.params.countryName;
         return (
-          <div id="chartdiv" style={{ width: "100%", height: "500px",marginTop:'100px' }}></div>
+          <div style= {{marginTop:'60px',paddingLeft:'20px' }}>
+            <h1>{country}</h1>
+          <div id="chartdiv" style={{ width: "100%", height: "500px"}} ></div>
+          </div>
         );
       }
 
