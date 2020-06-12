@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
 appBar: { 
     backgroundColor: "#121212", 
     height: "50px",
+    position: "fixed",
+    top: "0px",
+    verticalAlign: "middle"
 },
 title: {
     flexGrow: 1,
@@ -26,7 +29,7 @@ export default function Navbar() {
         <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Typography variant="h5" className={classes.title} align='left'>
-            <img src={Logo} alt='' title='Updated Daily' style={{width:'30px',height:'30px',float:'left',margin:'0px 10px'}} />COVID-19 Stats
+            <img src={Logo} alt='' title='Updated Daily' style={{width:'30px',height:'30px',float:'left',margin:'0px 10px 10px 10px'}} />COVID-19 Stats
             </Typography>
         
           </Toolbar>
