@@ -3,6 +3,7 @@ import RecoveredIcon from '@material-ui/icons/Favorite';
 import DeathsIcon from '@material-ui/icons/FavoriteBorder';
 import NewCasesIcon from '@material-ui/icons/NewReleases';
 import TotalCasesIcon from '@material-ui/icons/Functions';
+import { Link } from 'react-router-dom'
 
 class Data extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class Data extends Component {
           <div style={{width:'15%',fontSize:'small',verticalAlign:'middle',textAlign:'left'}}>
           <RecoveredIcon title="Total Recovered" style={{color:"blue",height:'20px',width:'20px',verticalAlign:'middle'}} />{this.props.info.TotalRecovered.toLocaleString()}
           </div>
+          <Link  to={`/country/${this.props.info.Slug}`}>View</Link>
         </div>
       );
     }

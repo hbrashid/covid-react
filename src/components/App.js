@@ -34,7 +34,7 @@ class App extends Component {
 
   createNewChart = () => {
     // setup the chart in its container
-    let map = am4core.create("chartdiv", am4maps.MapChart);
+    let map = am4core.create("mapdiv", am4maps.MapChart);
     // we're going to use the low-res world map
     map.geodata = am4geodata_worldLow;
     // the type of map we're using 
@@ -109,7 +109,7 @@ class App extends Component {
       <div>
       <Navbar />
         {/* // the container div for the map */}
-        <div id="chartdiv" className="map"></div>
+        <div id="mapdiv" className="map"></div>
         {/* // the global totals line above the country data */}
         <GlobalStats global={this.state.global} />
 

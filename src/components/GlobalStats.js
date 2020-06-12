@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 class GlobalStats extends Component {
 
     render() {
-        return(
+         return(
             <div style={{marginTop:'80px'}}>
             <h4 style={{paddingLeft:"27px"}}>Global Stats: {this.props.global.TotalConfirmed} cases; {this.props.global.TotalDeaths} deaths; {this.props.global.TotalRecovered} recovered</h4>
             </div>
