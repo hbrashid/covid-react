@@ -5,10 +5,10 @@ import * as am4charts from "@amcharts/amcharts4/charts"; // don't delete, will u
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import Navbar from './components/Navbar';
-import Data from './components/Data'
-import Attributions from './components/Attributions';
-import GlobalStats from './components/GlobalStats';
+import Navbar from './Navbar';
+import Data from './Data'
+import Attributions from './Attributions';
+import GlobalStats from './GlobalStats';
 
 am4core.useTheme(am4themes_animated);
 

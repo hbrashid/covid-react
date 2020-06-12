@@ -9,10 +9,10 @@ function Attributions() {
     return(
       <div className="attributions">
         <div>
-          <TotalCasesIcon style={{color:"red"}} />Total Cases
-          <DeathsIcon style={{paddingLeft:"10px"}} />Total Deaths
-          <NewCasesIcon style={{paddingLeft:"10px", color:"red"}} />New Cases
-          <RecoveredIcon style={{paddingLeft:"10px", color:"blue"}} />Total Recovered
+          <TotalCasesIcon style={{color:"red",verticalAlign:"middle"}} />Total Cases
+          <DeathsIcon style={{paddingLeft:"10px",verticalAlign:"middle"}} />Total Deaths
+          <NewCasesIcon style={{paddingLeft:"10px", color:"red",verticalAlign:"middle"}} />New Cases
+          <RecoveredIcon style={{paddingLeft:"10px", color:"blue",verticalAlign:"middle"}} />Total Recovered
         </div>
         <br/>
         &nbsp;API by: <a href="https://covid19api.com/" target="blank">Covid-19 API</a><br/>
