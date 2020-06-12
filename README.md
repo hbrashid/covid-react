@@ -1,3 +1,7 @@
+6/11 made routes for about
+
+  -- don't forget to: npm install react-router-dom
+
 I installed amCharts to provide this heat map functionality.
 
 If you want to use it, you'll have to:
