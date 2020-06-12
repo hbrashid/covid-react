@@ -34,10 +34,10 @@ export default function Navbar() {
             </Typography>
             <ul className="nav-list">
                     <li className="nav-list-item">
-                        {<Link to="/about">About</Link>}
+                        {<Link className="nav-link" to="/about">About</Link>}
                     </li>
                     <li className="nav-list-item">
-                        {<Link to="/">Home</Link>}
+                        {<Link className="nav-link" to="/">Home</Link>}
                     </li>
                 </ul>
           </Toolbar>
