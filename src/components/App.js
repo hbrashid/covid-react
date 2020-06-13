@@ -5,8 +5,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Navbar from './Navbar';
-import Data from './Data'
-import Attributions from './Attributions';
+import Data from './Data';
 import GlobalStats from './GlobalStats';
 
 am4core.useTheme(am4themes_animated);
@@ -95,6 +94,7 @@ class App extends Component {
       .then((json) => json.json())
       .then((data) => {
         this.setState({
+          currentCountry: '',
           global: data.Global,
           hits: data.Countries
         });
@@ -111,15 +111,13 @@ class App extends Component {
         <div id="mapdiv" className="map"></div>
         {/* // the global totals line above the country data */}
         <GlobalStats global={this.state.global} />
-
+        <div style={{marginTop:'80px'}}>
         {/* // map through each country and put its data on a card */}
         {this.state.hits.map((covidData, index) => (
-          <Data key={index} info={covidData} />
+          <Data key={index} info={covidData} zoomMap={this.zoomMap} />
         ))}
-
-        {/* // show where all the data came from */}
-        <Attributions />
-      </div>
+        </div>
+       </div>
     );
   }
 }
