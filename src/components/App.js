@@ -50,7 +50,18 @@ class App extends Component {
     // to the map countries (polygonseries)
     var polygonTemplate = polygonSeries.mapPolygons.template;
     // when we hover over a country show its name and number of cases
-    polygonTemplate.tooltipText = "{name} : {value}";
+    polygonTemplate.tooltipHTML = `<img style="float:left;vertical-align:middle;margin-right:4px;" src="https://www.countryflags.io/{id}/shiny/24.png"/>
+    <strong>{name}</strong><br/>
+    <hr>
+    Confirmed Cases: {value} <br/>
+    New Cases: {newConfirmed} <br/>
+    Total Deaths: {totaDeaths}<br/>
+    Recent Deaths: {newDeaths}<br/>
+    Recovered! {recovered}`;
+
+    // Create hover state and set alternative fill color
+    let hs = polygonTemplate.states.create("hover");
+    hs.properties.fill = am4core.color("#a09d9a");
 
     // when we click on a country zoom in on that country
     polygonTemplate.events.on("hit", function(ev) {
@@ -75,7 +86,7 @@ class App extends Component {
     // map
     // all these values can be changed to whatever we want to display on our map
     mapData.forEach(newData => {
-        polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed})
+        polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed,"newConfirmed":newData.NewConfirmed,"newDeaths":newData.NewDeaths, "deaths": newData.TotalDeaths, "recovered": newData.TotalRecovered})
     });
     
     // tell it to make each country solid
@@ -106,16 +117,17 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Navbar />
-        {/* // the container div for the map */}
-        <div id="mapdiv" className="map"></div>
+      <Navbar />     
         {/* // the global totals line above the country data */}
         <GlobalStats global={this.state.global} />
+        {/* // the container div for the map */}
+        <div id="mapdiv" className="map"></div>
+
         <div style={{marginTop:'80px'}}>
         {/* // map through each country and put its data on a card */}
-        {this.state.hits.map((covidData, index) => (
+        {/* {this.state.hits.map((covidData, index) => (
           <Data key={index} info={covidData} zoomMap={this.zoomMap} />
-        ))}
+        ))} */}
         </div>
        </div>
     );

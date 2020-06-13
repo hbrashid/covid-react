@@ -33,7 +33,7 @@ export default function Navbar() {
             <Typography variant="h5" className={classes.title} align='left'>
             <img src={Logo} alt='' title='Updated Daily' style={{width:'30px',height:'30px',float:'left',margin:'0px 10px 10px 10px'}} />
             COVID-19 Stats
-            <Legend/>
+            {/* <Legend/> */}
             </Typography>
             
             <ul className="nav-list">
