@@ -55,7 +55,7 @@ class App extends Component {
     <hr>
     Confirmed Cases: {value} <br/>
     New Cases: {newConfirmed} <br/>
-    Total Deaths: {totaDeaths}<br/>
+    Total Deaths: {deaths}<br/>
     Recent Deaths: {newDeaths}<br/>
     Recovered! {recovered}`;
 
