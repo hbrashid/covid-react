@@ -61,7 +61,7 @@ class App extends Component {
     New Cases: {newConfirmed} <br/>
     Total Deaths: {deaths}<br/>
     Recent Deaths: {newDeaths}<br/>
-    Recovered! {recovered}
+    Recovered: {recovered}
     <a href="/country/{slug}/{name}" style="text-decoration:none;font-size:small">View Progression</a>
     `;
 
