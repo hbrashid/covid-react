@@ -9,7 +9,11 @@ class GlobalStats extends Component {
         if (this.props.global.TotalDeaths) {deaths= this.props.global.TotalDeaths.toLocaleString()}
         let recovered = ''
         if (this.props.global.TotalRecovered) {recovered= this.props.global.TotalRecovered.toLocaleString()}
+        let update = new Date(this.props.lastUpdate);
+
         return(
+            <div className="statsContainer">
+            <div className="statsHeader">World Totals<br/> <span style={{fontSize:'x-small',color:'white',lineHeight:'10px'}} >(Latest Update: {update.toLocaleString()})</span></div>
             <div className="statsBoard">
             <div className="statsDiv" style={{backgroundColor:'red'}}>
                 <svg viewBox="0 0 100 50"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -30,6 +34,7 @@ class GlobalStats extends Component {
             <text x="50" y="15" style={{textAnchor:'middle',fill:'black'}}>{recovered}</text> 
             <text x="50" y="30" style={{textAnchor:'middle',fill:'black'}}>Recovered</text>
             </svg>
+            </div>
             </div>
             </div>
         )

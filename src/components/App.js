@@ -16,7 +16,8 @@ class App extends Component {
     super(props);
     this.state = {
       hits: [],
-      global: []
+      global: [],
+      lastUpdate: ''
     };
   }
  
@@ -113,7 +114,8 @@ class App extends Component {
         this.setState({
           currentCountry: '',
           global: data.Global,
-          hits: data.Countries
+          hits: data.Countries,
+          lastUpdate: data.Date
         });
         this.createNewChart();
       })
@@ -125,7 +127,7 @@ class App extends Component {
       <div>
       <Navbar />     
         {/* // the global totals line above the country data */}
-        <GlobalStats global={this.state.global} />
+        <GlobalStats global={this.state.global} lastUpdate={this.state.lastUpdate} />
         {/* // the container div for the map */}
         <div id="mapdiv" className="map"></div>
 
