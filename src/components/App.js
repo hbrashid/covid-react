@@ -49,6 +49,10 @@ class App extends Component {
     // this is the template to interface our own configurations
     // to the map countries (polygonseries)
     var polygonTemplate = polygonSeries.mapPolygons.template;
+    polygonSeries.calculateVisualCenter = true;
+    polygonSeries.tooltip.label.interactionsEnabled = true;
+    polygonSeries.tooltip.keepTargetHover = true;
+    polygonSeries.mapPolygons.template.tooltipPosition = "fixed";
     // when we hover over a country show its name and number of cases
     polygonTemplate.tooltipHTML = `<img style="float:left;vertical-align:middle;margin-right:4px;" src="https://www.countryflags.io/{id}/shiny/24.png"/>
     <strong>{name}</strong><br/>
@@ -57,7 +61,9 @@ class App extends Component {
     New Cases: {newConfirmed} <br/>
     Total Deaths: {deaths}<br/>
     Recent Deaths: {newDeaths}<br/>
-    Recovered! {recovered}`;
+    Recovered! {recovered}
+    <a href="/country/{slug}/{name}" style="text-decoration:none;font-size:small">View Progression</a>
+    `;
 
     // Create hover state and set alternative fill color
     let hs = polygonTemplate.states.create("hover");
@@ -86,7 +92,7 @@ class App extends Component {
     // map
     // all these values can be changed to whatever we want to display on our map
     mapData.forEach(newData => {
-        polygonSeries.data.push({"id": newData.CountryCode,"name": newData.Country, "value": newData.TotalConfirmed,"newConfirmed":newData.NewConfirmed,"newDeaths":newData.NewDeaths, "deaths": newData.TotalDeaths, "recovered": newData.TotalRecovered})
+        polygonSeries.data.push({"id": newData.CountryCode,"slug":newData.Slug,"name": newData.Country, "value": newData.TotalConfirmed,"newConfirmed":newData.NewConfirmed,"newDeaths":newData.NewDeaths, "deaths": newData.TotalDeaths, "recovered": newData.TotalRecovered})
     });
     
     // tell it to make each country solid
