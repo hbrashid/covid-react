@@ -145,7 +145,7 @@ body {
   .map {
     width: auto;
     height: auto;
-    margin-top: 50px;
+    margin-top: 10vh;
     margin-bottom: 100px;
   }
   .dataDiv {
@@ -167,6 +167,7 @@ body {
   }
   .statsContainer {
     height: 110px;
+    margin-top: 15vh;
   }
   
 }
