@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography} from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Logo from '../img/covid.png';
+import Legend from './Legend';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,8 +31,11 @@ export default function Navbar() {
         <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Typography variant="h5" className={classes.title} align='left'>
-            <img src={Logo} alt='' title='Updated Daily' style={{width:'30px',height:'30px',float:'left',margin:'0px 10px 10px 10px'}} />COVID-19 Stats
+            <img src={Logo} alt='' title='Updated Daily' style={{width:'30px',height:'30px',float:'left',margin:'0px 10px 10px 10px'}} />
+            COVID-19 Stats
+            {/* <Legend/> */}
             </Typography>
+            
             <ul className="nav-list">
                     <li className="nav-list-item">
                         {<Link className="nav-link" to="/about">About</Link>}

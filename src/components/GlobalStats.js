@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class GlobalStats extends Component {
 
     render() {
@@ -11,8 +10,27 @@ class GlobalStats extends Component {
         let recovered = ''
         if (this.props.global.TotalRecovered) {recovered= this.props.global.TotalRecovered.toLocaleString()}
         return(
-            <div style={{marginTop:'80px'}}>
-            <h3 style={{paddingLeft:"25px"}}>Global Stats: {confirmed} cases; {deaths} deaths; {recovered} recovered</h3>
+            <div className="statsBoard">
+            <div className="statsDiv" style={{backgroundColor:'red'}}>
+                <svg viewBox="0 0 100 50"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="15" style={{textAnchor:'middle',fill:'yellow'}}> {confirmed}</text>
+            <text x="50" y="30" style={{textAnchor:'middle',fill:'yellow'}}> Confirmed</text>
+            </svg>
+            </div> 
+            <div className="statsDiv" style={{backgroundColor:'black'}}>
+                <svg viewBox="0 0 100 50"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+            <text x="50" y="15" style={{textAnchor:'middle',fill:'white'}}>{deaths}</text>
+            <text x="50" y="30" style={{textAnchor:'middle',fill:'white'}}>Deaths</text>
+            </svg>
+            </div>
+            <div className="statsDiv" style={{backgroundColor:'lightblue'}}>
+                <svg viewBox="0 0 100 50"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+            <text x="50" y="15" style={{textAnchor:'middle',fill:'black'}}>{recovered}</text> 
+            <text x="50" y="30" style={{textAnchor:'middle',fill:'black'}}>Recovered</text>
+            </svg>
+            </div>
             </div>
         )
     }
