@@ -156,4 +156,17 @@ body {
   .attributions {
     width: auto;
   }
+  .nav-link {
+    font-size: 1rem;
+  }
+  .statsDiv {
+    height: 75px;
+  }
+  .statsBoard {
+    height: 75px;
+  }
+  .statsContainer {
+    height: 110px;
+  }
+  
 }
