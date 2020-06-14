@@ -5,7 +5,6 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Navbar from './Navbar';
-import Data from './Data';
 import GlobalStats from './GlobalStats';
 
 am4core.useTheme(am4themes_animated);
@@ -80,8 +79,8 @@ class App extends Component {
     polygonSeries.heatRules.push({
         "target": polygonSeries.mapPolygons.template,
         "property": "fill",
-        "min": am4core.color("#F5DBCB"),
-        "max": am4core.color("#ED7B84"),
+        "min": am4core.color("#c2918c"),
+        "max": am4core.color("#ff0000"),
         "dataField": "value",
         "logarithmic": true
     });
@@ -130,13 +129,6 @@ class App extends Component {
         <GlobalStats global={this.state.global} lastUpdate={this.state.lastUpdate} />
         {/* // the container div for the map */}
         <div id="mapdiv" className="map"></div>
-
-        <div style={{marginTop:'80px'}}>
-        {/* // map through each country and put its data on a card */}
-        {/* {this.state.hits.map((covidData, index) => (
-          <Data key={index} info={covidData} zoomMap={this.zoomMap} />
-        ))} */}
-        </div>
        </div>
     );
   }
