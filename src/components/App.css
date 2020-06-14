@@ -73,23 +73,6 @@ body {
   -webkit-border-bottom-right-radius: 56px;
 }
 
-.dataDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-  padding: 10px 2px;
-  font-size: large;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 45%;
-  margin:25px 15px;
-  -webkit-box-shadow: 5px 5px 15px 5px #615d5d60; 
-  box-shadow: 5px 5px 15px 5px #615d5d60;
-  transform: skew(-4deg);
-  font-weight: bold;
-  background-color: white;
-}
 
 .attributions {
   width: 50%;
@@ -153,11 +136,6 @@ body {
     height: auto;
     margin-top: 50px;
     margin-bottom: 100px;
-  }
-  .dataDiv {
-    display: flex;
-    width: auto;
-    margin-top: 50%;
   }
   .attributions {
     width: auto;
