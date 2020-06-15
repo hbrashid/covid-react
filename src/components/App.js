@@ -6,6 +6,7 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import Navbar from './Navbar';
 import GlobalStats from './GlobalStats';
+import NoData from './NoData';
 
 am4core.useTheme(am4themes_animated);
 
@@ -126,7 +127,11 @@ class App extends Component {
       <div>
       <Navbar />     
         {/* // the global totals line above the country data */}
+        {this.state.global ?
         <GlobalStats global={this.state.global} lastUpdate={this.state.lastUpdate} />
+        : 
+        <NoData/> 
+        }
         {/* // the container div for the map */}
         <div id="mapdiv" className="map"></div>
        </div>
