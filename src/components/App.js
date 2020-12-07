@@ -55,7 +55,7 @@ class App extends Component {
     polygonSeries.tooltip.keepTargetHover = true;
     polygonSeries.mapPolygons.template.tooltipPosition = "fixed";
     // when we hover over a country show its name and number of cases
-    polygonTemplate.tooltipHTML = `<img style="float:left;vertical-align:middle;margin-right:4px;" src="https://www.countryflags.io/{id}/shiny/24.png"/>
+    polygonTemplate.tooltipHTML = `<img style="float:left;vertical-align:middle;margin-right:4px;" src="https://www.countryflags.io/{id}/shiny/24.png" alt=""/>
     <strong>{name}</strong><br/>
     <hr>
     Confirmed Cases: {value} <br/>
