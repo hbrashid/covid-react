@@ -7,8 +7,8 @@ class GlobalStats extends Component {
         if (this.props.global.TotalConfirmed) {confirmed= this.props.global.TotalConfirmed.toLocaleString()}
         let deaths = ''
         if (this.props.global.TotalDeaths) {deaths= this.props.global.TotalDeaths.toLocaleString()}
-        let recovered = ''
-        if (this.props.global.TotalRecovered) {recovered= this.props.global.TotalRecovered.toLocaleString()}
+        let newConfirmed = ''
+        if (this.props.global.NewConfirmed) {newConfirmed= this.props.global.NewConfirmed.toLocaleString()}
         let update = new Date(this.props.lastUpdate);
 
         return(
@@ -31,8 +31,8 @@ class GlobalStats extends Component {
             <div className="statsDiv" style={{backgroundColor:'lightblue'}}>
                 <svg viewBox="0 0 100 50"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
 
-            <text x="50" y="15" style={{textAnchor:'middle',fill:'black'}}>{recovered}</text> 
-            <text x="50" y="30" style={{textAnchor:'middle',fill:'black'}}>Recovered</text>
+            <text x="50" y="15" style={{textAnchor:'middle',fill:'black'}}>{newConfirmed}</text> 
+            <text x="50" y="30" style={{textAnchor:'middle',fill:'black'}}>New Cases</text>
             </svg>
             </div>
             </div>

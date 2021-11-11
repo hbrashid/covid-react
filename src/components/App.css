@@ -20,8 +20,8 @@ body {
 .map {
   margin: 10px;
   width: 90%;
-  margin: 0 auto;
-  height: 350px;
+  margin: 3% auto;
+  height: 400px;
   /* position: fixed;
   top: 360px;
   right: 10px; */
@@ -67,11 +67,11 @@ body {
 
 .statsDiv {
   /* border-radius: 5px; */
-  border: 3px solid black;
-  -webkit-box-shadow: 5px 5px 15px 5px #00000070; 
-  box-shadow: 5px 5px 15px 5px #00000070;
+  /* border: 3px solid black; */
+  /* -webkit-box-shadow: 5px 5px 15px 5px #00000070;  */
+  /* box-shadow: 5px 5px 15px 5px #00000070; */
   width:30%;
-  height:120px;
+  /* height:120px; */
   text-align:center;
   vertical-align:middle;
   border-top-left-radius: 56px;
